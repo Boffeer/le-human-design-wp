@@ -17,15 +17,17 @@ $basic_options_container = Container::make('theme_options', 'kapitalno_theme_set
 Container::make('theme_options', 'theme_options', 'Контакты')
 	->set_page_parent($basic_options_container) // reference to a top level container
 	->add_tab('Contacts', array(
-		Field::make('text', 'instagram', 'Instagram')
+		Field::make('text', 'instagram_url', 'Instagram')
 			->set_width(50),
-		Field::make('text', 'facebook', 'Facebook')
+		Field::make('text', 'facebook_url', 'Facebook')
+			->set_width(50),
+		Field::make('text', 'youtube_url', 'Youtube')
 			->set_width(50),
 		Field::make('text', 'email', 'Email')
 			->set_width(50),
 		Field::make('text', 'phone', 'Phone')
 			->set_width(50),
-		Field::make('text', 'privacy', 'Privacy url')
+		Field::make('text', 'privacy_url', 'Privacy url')
 			->set_width(50),
 	));
 
@@ -40,6 +42,25 @@ Container::make('post_meta', 'landing', 'Landing')
 			->add_fields(array(
 				Field::make('image', 'review', 'Review')
 					->set_value_type('url'),
+			))
+	))
+	->add_tab('Programm', array(
+		Field::make('complex', 'programm', 'Programm')
+			->setup_labels(array(
+				'plural_name' => 'Programms',
+				'singular_name' => 'Programm'
+			))
+			->add_fields(array(
+				Field::make('text', 'title', 'Title'),
+				Field::make('complex', 'bullets', 'Bullets')
+					->setup_labels(array(
+						'plural_name' => 'bullets',
+						'singular_name' => 'bullet'
+					))
+					->add_fields(array(
+						Field::make('text', 'bullet', 'Bullet'),
+					)),
+				Field::make('textarea', 'program_results', 'Results'),
 			))
 	))
 	->add_tab('Tariffs', array(
@@ -59,8 +80,8 @@ Container::make('post_meta', 'landing', 'Landing')
 						Field::make('checkbox', 'is_negative', __('Is negative'))
 							->set_option_value('yes')
 					)),
-				Field::make('text', 'tariffs_duration', 'Duration'),
-				Field::make('text', 'tariffs_cost', 'Cost'),
-				Field::make('text', 'tariffs_avalaible', 'Avalaible'),
+				Field::make('text', 'duration', 'Duration'),
+				Field::make('text', 'cost', 'Cost'),
+				Field::make('text', 'avalaible', 'Avalaible'),
 			))
 	));
