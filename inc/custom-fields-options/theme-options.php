@@ -82,6 +82,7 @@ Container::make('post_meta', 'landing', 'Landing')
 					)),
 				Field::make('text', 'duration', 'Duration'),
 				Field::make('text', 'cost', 'Cost'),
+				Field::make('text', 'cost_special', 'Cost special'),
 				Field::make('text', 'avalaible', 'Avalaible'),
 			))
 	));
