@@ -145,8 +145,8 @@ function lhd_scripts()
 {
 	wp_enqueue_style('normalize', get_stylesheet_directory_uri() . '/css/normalize.css', array(), _S_VERSION);
 	wp_enqueue_style('splide-css', get_stylesheet_directory_uri() . '/css/splide.min.css', array(), _S_VERSION);
-	wp_enqueue_style('poppa-cs', get_stylesheet_directory_uri() . '/assets/poppa/poppa.min.css', array(), _S_VERSION);
-	wp_enqueue_style('poppa-cs', get_stylesheet_directory_uri() . '/assets/bayan/bayan.min.css', array(), _S_VERSION);
+	wp_enqueue_style('poppa-css', get_stylesheet_directory_uri() . '/assets/poppa/poppa.min.css', array(), _S_VERSION);
+	wp_enqueue_style('bayan-css', get_stylesheet_directory_uri() . '/assets/bayan/bayan.min.css', array(), _S_VERSION);
 	wp_enqueue_style('lhd-style', get_stylesheet_directory_uri() . '/css/index.min.css', array(), _S_VERSION);
 
 	wp_enqueue_script('splide-js', get_stylesheet_directory_uri() . '/js/splide.min.js', array(), _S_VERSION, true);
