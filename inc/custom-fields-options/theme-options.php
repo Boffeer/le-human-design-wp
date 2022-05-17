@@ -7,14 +7,14 @@ use Carbon_Fields\Container;
 use Carbon_Fields\Field;
 
 // Default options page
-$basic_options_container = Container::make('theme_options', 'kapitalno_theme_settings',  'Управление контентом')
+$basic_options_container = Container::make('theme_options', 'kapitalno_theme_settings',  'Content edit')
 	->add_fields(array(
 		Field::make('header_scripts', 'crb_header_script', 'Header Script'),
 		Field::make('footer_scripts', 'crb_footer_script', 'Footer Script'),
 	));
 
 // Add second options page under 'Basic Options'
-Container::make('theme_options', 'theme_options', 'Контакты')
+Container::make('theme_options', 'theme_options', 'Contacts')
 	->set_page_parent($basic_options_container) // reference to a top level container
 	->add_tab('Contacts', array(
 		Field::make('text', 'instagram_url', 'Instagram')
