@@ -1,4 +1,5 @@
 <?php
+
 /**
  * le-human-design functions and definitions
  *
@@ -7,9 +8,9 @@
  * @package le-human-design
  */
 
-if ( ! defined( '_S_VERSION' ) ) {
+if (!defined('_S_VERSION')) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.0' );
+	define('_S_VERSION', '1.0.0');
 }
 
 /**
@@ -19,17 +20,18 @@ if ( ! defined( '_S_VERSION' ) ) {
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function lhd_setup() {
+function lhd_setup()
+{
 	/*
 		* Make theme available for translation.
 		* Translations can be filed in the /languages/ directory.
 		* If you're building a theme based on le-human-design, use a find and replace
 		* to change 'lhd' to the name of your theme in all the template files.
 		*/
-	load_theme_textdomain( 'lhd', get_template_directory() . '/languages' );
+	load_theme_textdomain('lhd', get_template_directory() . '/languages');
 
 	// Add default posts and comments RSS feed links to head.
-	add_theme_support( 'automatic-feed-links' );
+	add_theme_support('automatic-feed-links');
 
 	/*
 		* Let WordPress manage the document title.
@@ -37,19 +39,19 @@ function lhd_setup() {
 		* hard-coded <title> tag in the document head, and expect WordPress to
 		* provide it for us.
 		*/
-	add_theme_support( 'title-tag' );
+	add_theme_support('title-tag');
 
 	/*
 		* Enable support for Post Thumbnails on posts and pages.
 		*
 		* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		*/
-	add_theme_support( 'post-thumbnails' );
+	add_theme_support('post-thumbnails');
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__( 'Primary', 'lhd' ),
+			'menu-1' => esc_html__('Primary', 'lhd'),
 		)
 	);
 
@@ -83,7 +85,7 @@ function lhd_setup() {
 	);
 
 	// Add theme support for selective refresh for widgets.
-	add_theme_support( 'customize-selective-refresh-widgets' );
+	add_theme_support('customize-selective-refresh-widgets');
 
 	/**
 	 * Add support for core custom logo.
@@ -100,7 +102,7 @@ function lhd_setup() {
 		)
 	);
 }
-add_action( 'after_setup_theme', 'lhd_setup' );
+add_action('after_setup_theme', 'lhd_setup');
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -109,22 +111,24 @@ add_action( 'after_setup_theme', 'lhd_setup' );
  *
  * @global int $content_width
  */
-function lhd_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'lhd_content_width', 640 );
+function lhd_content_width()
+{
+	$GLOBALS['content_width'] = apply_filters('lhd_content_width', 640);
 }
-add_action( 'after_setup_theme', 'lhd_content_width', 0 );
+add_action('after_setup_theme', 'lhd_content_width', 0);
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function lhd_widgets_init() {
+function lhd_widgets_init()
+{
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Sidebar', 'lhd' ),
+			'name'          => esc_html__('Sidebar', 'lhd'),
 			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'lhd' ),
+			'description'   => esc_html__('Add widgets here.', 'lhd'),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -132,22 +136,25 @@ function lhd_widgets_init() {
 		)
 	);
 }
-add_action( 'widgets_init', 'lhd_widgets_init' );
+add_action('widgets_init', 'lhd_widgets_init');
 
 /**
  * Enqueue scripts and styles.
  */
-function lhd_scripts() {
-	wp_enqueue_style( 'lhd-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'lhd-style', 'rtl', 'replace' );
+function lhd_scripts()
+{
+	wp_enqueue_style('normalize', get_stylesheet_directory_uri() . '/css/normalize.css', array(), _S_VERSION);
+	wp_enqueue_style('splide-css', get_stylesheet_directory_uri() . '/css/splide.min.css', array(), _S_VERSION);
+	wp_enqueue_style('poppa-cs', get_stylesheet_directory_uri() . '/assets/poppa/poppa.min.css', array(), _S_VERSION);
+	wp_enqueue_style('poppa-cs', get_stylesheet_directory_uri() . '/assets/bayan/bayan.min.css', array(), _S_VERSION);
+	wp_enqueue_style('lhd-style', get_stylesheet_directory_uri() . '/css/index.min.css', array(), _S_VERSION);
 
-	wp_enqueue_script( 'lhd-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+	wp_enqueue_script('splide-js', get_stylesheet_directory_uri() . '/js/splide.min.js', array(), _S_VERSION, true);
+	wp_enqueue_script('poppa-js', get_stylesheet_directory_uri() . '/assets/poppa/poppa.js', array(), _S_VERSION, true);
+	wp_enqueue_script('bayan-js', get_stylesheet_directory_uri() . '/assets/bayan/bayan.js', array(), _S_VERSION, true);
+	wp_enqueue_script('lhd-scripts', get_stylesheet_directory_uri() . '/js/index.js', array(), _S_VERSION, true);
 }
-add_action( 'wp_enqueue_scripts', 'lhd_scripts' );
+add_action('wp_enqueue_scripts', 'lhd_scripts');
 
 /**
  * Implement the Custom Header feature.
@@ -172,7 +179,6 @@ require get_template_directory() . '/inc/customizer.php';
 /**
  * Load Jetpack compatibility file.
  */
-if ( defined( 'JETPACK__VERSION' ) ) {
+if (defined('JETPACK__VERSION')) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
-
