@@ -1,4 +1,10 @@
 <?php get_header(); ?>
+
+<?php
+$page_id = get_the_ID();
+$contacts = get_crb_contacts();
+?>
+
 <main class="main">
 	<section class="hero">
 		<div class="container hero__container">
@@ -119,328 +125,42 @@
 				Et tout cela grâce au programme <br />
 				d’accompagnement personnel
 			</h2>
+			<?php
+			$programm = carbon_get_post_meta($page_id, 'programm');
+			?>
 			<div class="programm__gallery">
-				<div class="programm-card__wrap">
-					<article class="programm-card bayan">
-						<div class="programm-card__top">
-							<h3 class="programm-card__title">
-								1. Immersion dans le Human Design
-							</h3>
-							<button class="programm-card__closer"></button>
-						</div>
-						<div class="programm-card__bottom">
-							<div class="programm-card__index">
-								<h4 class="programm-card__subtitle">Plan du rendez-vous</h4>
-								<ul class="programm-card__bullets">
-									<li class="programm-card__bullet">
-										Vos forces, vos faiblesses et comment les gérer.
-									</li>
-									<li class="programm-card__bullet">
-										Vrais désirs et objectifs que vous fuyez ou que vous ne
-										réalisez pas.
-									</li>
-									<li class="programm-card__bullet">
-										Quelles décisions vous mèneront plus rapidement à l'objectif
-										et qu'est-ce qui vous empêche d'avoir une vie heureuse
-										maintenant .
-									</li>
-									<li class="programm-card__bullet">
-										Des talents cachés, des capacités et des compétences qui
-										vous donneront plus d'énergie.
-									</li>
-									<li class="programm-card__bullet">
-										Pourquoi vous ne devriez compter que sur vous-même et
-										comment ne pas dépendre des autres ..
-									</li>
-								</ul>
+				<?php foreach ($programm as $key => $module) : ?>
+					<div class="programm-card__wrap">
+						<article class="programm-card bayan">
+							<div class="programm-card__top">
+								<h3 class="programm-card__title">
+									<?php echo $key + 1 . '.' . $module['title']; ?>
+								</h3>
+								<button class="programm-card__closer"></button>
 							</div>
-							<div class="programm-card-result">
-								<h4 class="programm-card__subtitle program-card-result__title">Résultat:</h4>
-								<p class="programm-card__desc">
-									Vous comprendrez qui vous êtes et ce que vous voulez
-									vraiment pour une vie heureuse
-								</p>
+							<div class="programm-card__bottom">
+								<div class="programm-card__index">
+									<h4 class="programm-card__subtitle">Plan du rendez-vous</h4>
+									<ul class="programm-card__bullets">
+										<?php foreach ($module['bullets'] as $bullet) : ?>
+											<li class="programm-card__bullet">
+												<?php echo $bullet['bullet']; ?>
+											</li>
+										<?php endforeach; ?>
+									</ul>
+								</div>
+								<div class="programm-card-result">
+									<h4 class="programm-card__subtitle program-card-result__title">Résultat:</h4>
+									<p class="programm-card__desc">
+										<?php
+										echo $module['program_results'];
+										?>
+									</p>
+								</div>
 							</div>
-						</div>
-					</article>
-				</div>
-				<div class="programm-card__wrap">
-					<article class="programm-card bayan">
-						<div class="programm-card__top">
-							<h3 class="programm-card__title">2. Motivations de vie</h3>
-							<button class="programm-card__closer"></button>
-						</div>
-						<div class="programm-card__bottom">
-
-							<div class="programm-card__index">
-								<h4 class="programm-card__subtitle">Plan du rendez-vous</h4>
-								<ul class="programm-card__bullets">
-									<li class="programm-card__bullet">
-										Dépressions émotionnelles et pots-de-vin financiers. Comment
-										s'en protéger?
-									</li>
-									<li class="programm-card__bullet">
-										Comment fonctionne la motivation profonde d'une personne ?
-									</li>
-									<li class="programm-card__bullet">
-										Pourquoi ne faisons-nous pas réellement ce qui est bon pour
-										nous ?
-									</li>
-									<li class="programm-card__bullet">
-										Récupération efficace. Comment se détendre pour travailler
-										de manière productive ?
-									</li>
-									<li class="programm-card__bullet">
-										État du débit. Comment identifier et accomplir les tâches
-										qui mènent à la croissance ?
-									</li>
-									<li class="programm-card__bullet">
-										Comment grandir régulièrement dans tous les domaines de la
-										vie ?
-									</li>
-								</ul>
-							</div>
-							<div class="programm-card-result">
-								<h4 class="programm-card__subtitle program-card-result__title">Résultat:</h4>
-								<p class="programm-card__desc">
-									Vous comprendrez pourquoi la motivation ne fonctionne pas.
-									Vous apprendrez à influencer consciemment votre productivité
-									et vos habitudes. Vous commencerez à vous reposer et à
-									récupérer correctement. Vous comprendrez comment et grâce à
-									quoi grandir régulièrement dans toutes les sphères de la
-									vie.
-								</p>
-							</div>
-						</div>
-					</article>
-				</div>
-
-				<div class="programm-card__wrap">
-					<article class="programm-card bayan">
-						<div class="programm-card__top">
-							<h3 class="programm-card__title">3. La valeur de soi-même</h3>
-							<button class="programm-card__closer"></button>
-						</div>
-						<div class="programm-card__bottom">
-
-							<div class="programm-card__index">
-								<h4 class="programm-card__subtitle">Plan du rendez-vous</h4>
-								<ul class="programm-card__bullets">
-									<li class="programm-card__bullet">
-										Comment sortir des scénarios de vie négatifs qui vous
-										empêchent de gagner plus et de profiter de la vie.
-									</li>
-									<li class="programm-card__bullet">
-										Comment influencer votre état émotionnel ?
-									</li>
-									<li class="programm-card__bullet">
-										Critique intérieure. Comment arrêter d'être insatisfait de
-										soi et se reprocher ses erreurs ?
-									</li>
-									<li class="programm-card__bullet">
-										Communications. Un guide pour une communication profitable
-										et efficace avec les gens.
-									</li>
-								</ul>
-							</div>
-							<div class="programm-card-result">
-								<h4 class="programm-card__subtitle program-card-result__title">Résultat:</h4>
-								<p class="programm-card__desc">
-									Vous sortirez de scénarios négatifs dans la vie et le
-									travail qui vous ont empêché de gagner plus et d'améliorer
-									la qualité de vie. Arrêterez de vous critiquer et de vous
-									culpabiliser constamment. Vous apprendrez à vous faire
-									confiance et à établir une communication avec les autres
-									afin qu'ils vous fassent confiance.
-								</p>
-							</div>
-						</div>
-					</article>
-				</div>
-				<div class="programm-card__wrap">
-					<article class="programm-card bayan">
-						<div class="programm-card__top">
-							<h3 class="programm-card__title">
-								4. Comment faire avancer les choses
-							</h3>
-							<button class="programm-card__closer"></button>
-						</div>
-						<div class="programm-card__bottom">
-							<div class="programm-card__index">
-								<h4 class="programm-card__subtitle">Plan du rendez-vous</h4>
-								<ul class="programm-card__bullets">
-									<li class="programm-card__bullet">
-										Changement de paradigme - une nouvelle attitude envers votre
-										temps.
-									</li>
-									<li class="programm-card__bullet">
-										Comment se débarrasser du “bruit” dans votre vie.
-									</li>
-									<li class="programm-card__bullet">
-										Planification. Comment mettre en place pour clôturer toutes
-										les tâches de la journée ?
-									</li>
-									<li class="programm-card__bullet">
-										Mangeurs de temps. Détecter et détruire.
-									</li>
-								</ul>
-							</div>
-							<div class="programm-card-result">
-								<h4 class="programm-card__subtitle program-card-result__title">Résultat:</h4>
-								<p class="programm-card__desc">
-									Vous comprendrez comment et au prix de quoi libérer du
-									temps. Créez à partir de zéro ou affinez votre propre
-									système de planification qui vous aidera à accomplir des
-									tâches sans effort au quotidien.
-								</p>
-							</div>
-						</div>
-					</article>
-				</div>
-				<div class="programm-card__wrap">
-					<article class="programm-card bayan">
-						<div class="programm-card__top">
-							<h3 class="programm-card__title">
-								5. Gagner de l'argent - c’est simple
-							</h3>
-							<button class="programm-card__closer"></button>
-						</div>
-						<div class="programm-card__bottom">
-							<div class="programm-card__index">
-								<h4 class="programm-card__subtitle">Plan du rendez-vous</h4>
-								<ul class="programm-card__bullets">
-									<li class="programm-card__bullet">
-										Attitudes de pensées qui aident à vendre beaucoup et cher.
-									</li>
-									<li class="programm-card__bullet">
-										Analyse de la communication étape par étape avec un client
-										potentiel.
-									</li>
-									<li class="programm-card__bullet">
-										Comment arrêter d'avoir peur de tourner des story’s et
-										entretenir les réseaux sociaux.
-									</li>
-								</ul>
-							</div>
-							<div class="programm-card-result">
-								<h4 class="programm-card__subtitle program-card-result__title">Résultat:</h4>
-								<p class="programm-card__desc">
-									Vous allez croire en vous, vos connaissances, vos
-									compétences, vous allez vous sentir légitime et apprendrez à
-									vendre facilement aux gens sans violer votre espace
-									personnel.
-								</p>
-							</div>
-						</div>
-					</article>
-				</div>
-				<div class="programm-card__wrap">
-					<article class="programm-card bayan">
-						<div class="programm-card__top">
-							<h3 class="programm-card__title">6. Marketing</h3>
-							<button class="programm-card__closer"></button>
-						</div>
-						<div class="programm-card__bottom">
-							<div class="programm-card__index">
-								<h4 class="programm-card__subtitle">Plan du rendez-vous</h4>
-								<ul class="programm-card__bullets">
-									<li class="programm-card__bullet">
-										Comment construire un marketing efficace dans n'importe quel
-										secteur de services.
-									</li>
-									<li class="programm-card__bullet">
-										4 entonnoirs de vente classiques à travers lesquels vous
-										pouvez communiquer avec vos clients potentiels, transmettre
-										votre expertise et vendre pour des chèques élevés.
-									</li>
-									<li class="programm-card__bullet">
-										Stratégie, étape par étape pour vous promouvoir sur les
-										réseaux sociaux.
-									</li>
-									<li class="programm-card__bullet">
-										+10 solutions reconnues afin d'obtenir gratuitement des
-										clients payants longue durée
-									</li>
-									<li class="programm-card__bullet">
-										Contacts avec des spécialistes de confiance qui vous
-										apporteront constamment des clients via les réseaux sociaux.
-									</li>
-								</ul>
-							</div>
-							<div class="programm-card-result">
-								<h4 class="programm-card__subtitle program-card-result__title">Résultat:</h4>
-								<p class="programm-card__desc">
-									Une stratégie et des outils prêts à l'emploi pour vous
-									promouvoir sur les réseaux sociaux, obtenir des clients et
-									augmenter régulièrement vos revenus.
-								</p>
-							</div>
-						</div>
-					</article>
-				</div>
-				<div class="programm-card__wrap">
-					<article class="programm-card bayan">
-						<div class="programm-card__top">
-							<h3 class="programm-card__title">7. Pratique</h3>
-							<button class="programm-card__closer"></button>
-						</div>
-						<div class="programm-card__bottom">
-							<div class="programm-card__index">
-								<h4 class="programm-card__subtitle">Plan du rendez-vous</h4>
-								<ul class="programm-card__bullets">
-									<li class="programm-card__bullet">
-										Je vous donne l'opportunité de communiquer avec vos clients
-										potentiels.
-									</li>
-									<li class="programm-card__bullet">
-										Avec eux, vous développez toutes les compétences acquises,
-										obtenez des commentaires de ma part et vous n’aurez plus
-										peur du contact personnel avec vos clients.
-									</li>
-								</ul>
-							</div>
-							<div class="programm-card-result">
-								<h4 class="programm-card__subtitle program-card-result__title">Résultat:</h4>
-								<p class="programm-card__desc">
-									Compétences développées dans la pratique et pleine volonté
-									de vendre de manière indépendante à un prix élevé,
-									systématiquement et efficacement.
-								</p>
-							</div>
-						</div>
-					</article>
-				</div>
-				<div class="programm-card__wrap">
-					<article class="programm-card bayan">
-						<div class="programm-card__top">
-							<h3 class="programm-card__title">8. Finale</h3>
-							<button class="programm-card__closer"></button>
-						</div>
-						<div class="programm-card__bottom">
-							<div class="programm-card__index">
-								<h4 class="programm-card__subtitle">Plan du rendez-vous</h4>
-								<ul class="programm-card__bullets">
-									<li class="programm-card__bullet">
-										Compétence clé comme moyen de croissance systématique.
-									</li>
-									<li class="programm-card__bullet">
-										Comment révéler ses super pouvoirs
-									</li>
-									<li class="programm-card__bullet">
-										Construire votre propre système de croissance.
-									</li>
-								</ul>
-							</div>
-							<div class="programm-card-result">
-								<h4 class="programm-card__subtitle program-card-result__title">Résultat:</h4>
-								<p class="programm-card__desc">
-									Vous formerez votre système de croissance individuel en
-									fonction de vos compétences et capacités.
-								</p>
-							</div>
-						</div>
-					</article>
-				</div>
+						</article>
+					</div>
+				<?php endforeach; ?>
 			</div>
 		</div>
 	</section>
@@ -550,26 +270,19 @@
 	<section class="reviews">
 		<div class="container reviews__container">
 			<h2 class="section__title reviews__title section__title--center">Résultats de mes clients</h2>
+			<?php
+			$reviews = carbon_get_post_meta($page_id, 'reviews');
+			?>
 			<div class="splide reviews-slider">
 				<div class="reviews-slider__track splide__track">
 					<ul class="splide__list">
-						<li class="splide__slide reviews-slider__slide">
-							<picture class="reviews-slider__pic">
-								<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/reviews/review-1.png" alt="" class="reviews-slider__img">
-							</picture>
-						</li>
-						<li class="splide__slide reviews-slider__slide">
-							<picture class="reviews-slider__pic"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/reviews/review-2.png" alt="" class="reviews-slider__img"></picture>
-						</li>
-						<li class="splide__slide reviews-slider__slide">
-							<picture class="reviews-slider__pic"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/reviews/review-3.png" alt="" class="reviews-slider__img"></picture>
-						</li>
-						<li class="splide__slide reviews-slider__slide">
-							<picture class="reviews-slider__pic"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/reviews/review-4.png" alt="" class="reviews-slider__img"></picture>
-						</li>
-						<li class="splide__slide reviews-slider__slide">
-							<picture class="reviews-slider__pic"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/reviews/review-5.png" alt="" class="reviews-slider__img"></picture>
-						</li>
+						<?php foreach ($reviews as $key => $review) : ?>
+							<li class="splide__slide reviews-slider__slide">
+								<picture class="reviews-slider__pic">
+									<img src="<?php echo $review['review']; ?>" alt="Résultats de mes clients" class="reviews-slider__img">
+								</picture>
+							</li>
+						<?php endforeach; ?>
 					</ul>
 				</div>
 			</div>
@@ -581,6 +294,9 @@
 
 	<div id="pricing"></div>
 	<section class="pricing">
+		<?php
+		$tariffs = carbon_get_post_meta($page_id, 'tariffs');
+		?>
 		<div class="pricing__divider-top"></div>
 		<div class="pricing-decor__left"></div>
 		<div class="pricing-decor__top-right"></div>
@@ -590,90 +306,33 @@
 				Les tarifs
 			</h2>
 			<div class="pricing__gallery">
-				<div class="pricing-card__wrap">
-					<article class="pricing-card">
-						<h3 class="pricing-card__title">Идеальный Start</h3>
-						<ul class="pricing-card__bullets">
-							<li class="pricing-card__bullet">
-								Сопровождение 2 месяца (8 встреч) 1500 евро (если 3х 1800 евро)
-							</li>
-							<li class="pricing-card__bullet">
-								Интенсивное сопровождение 1 месяц (8 встреч) 3000 евро (если 3х 3300)
-							</li>
-							<li class="pricing-card__bullet">
-								Очное сопровождение 7000 евро (нет возможности платить в несколько раз)
-							</li>
-							<li class="pricing-card__bullet pricing-card__bullet--no">
-								Дарю свой курс с 20-ю видео, медитацию на очищение денежной энергии
-							</li>
-						</ul>
-						<div class="pricing-card__bottom">
-							<p class="pricing-card__duration">Длительность: 6 недель</p>
-							<p class="pricing-card__price">
-								<span class="pricing-card__price--special">1500 €</span>
-								<span class="pricing-card__price--regular">7000 €</span>
-							</p>
-							<button class="button button--primary pricing-card__button pricing-card__button--1">Les tarifs</button>
-							<p class="pricing-card__avalaible">Доступно 30 мест из 30</p>
-						</div>
-					</article>
-				</div>
-				<div class="pricing-card__wrap">
-					<article class="pricing-card">
-						<h3 class="pricing-card__title">Идеальный Start</h3>
-						<ul class="pricing-card__bullets">
-							<li class="pricing-card__bullet">
-								Сопровождение 2 месяца (8 встреч) 1500 евро (если 3х 1800 евро)
-							</li>
-							<li class="pricing-card__bullet">
-								Интенсивное сопровождение 1 месяц (8 встреч) 3000 евро (если 3х 3300)
-							</li>
-							<li class="pricing-card__bullet">
-								Очное сопровождение 7000 евро (нет возможности платить в несколько раз)
-							</li>
-							<li class="pricing-card__bullet">
-								Дарю свой курс с 20-ю видео, медитацию на очищение денежной энергии
-							</li>
-						</ul>
-						<div class="pricing-card__bottom">
-							<p class="pricing-card__duration">Длительность: 6 недель</p>
-							<p class="pricing-card__price">
-								<span class="pricing-card__price--special">1500 €</span>
-								<span class="pricing-card__price--regular">7000 €</span>
-							</p>
-							<button class="button button--primary pricing-card__button pricing-card__button--1">Les tarifs</button>
-							<p class="pricing-card__avalaible">Доступно 30 мест из 30</p>
-						</div>
-					</article>
-				</div>
-				<div class="pricing-card__wrap">
-					<article class="pricing-card">
-						<h3 class="pricing-card__title">Идеальный Start</h3>
-						<ul class="pricing-card__bullets">
-							<li class="pricing-card__bullet">
-								Сопровождение 2 месяца (8 встреч) 1500 евро (если 3х 1800 евро)
-							</li>
-							<li class="pricing-card__bullet">
-								Интенсивное сопровождение 1 месяц (8 встреч) 3000 евро (если 3х 3300)
-							</li>
-							<li class="pricing-card__bullet">
-								Очное сопровождение 7000 евро (нет возможности платить в несколько раз)
-							</li>
-							<li class="pricing-card__bullet">
-								Дарю свой курс с 20-ю видео, медитацию на очищение денежной энергии
-							</li>
-						</ul>
-						<div class="pricing-card__bottom">
-							<p class="pricing-card__duration">Длительность: 6 недель</p>
-							<p class="pricing-card__price">
-								<span class="pricing-card__price--special">1500 €</span>
-								<span class="pricing-card__price--regular">7000 €</span>
-							</p>
-							<button class="button button--primary pricing-card__button pricing-card__button--1">Les tarifs</button>
-							<p class="pricing-card__avalaible">Доступно 30 мест из 30</p>
-						</div>
-					</article>
-				</div>
+				<?php foreach ($tariffs as $key => $tariff) : ?>
+					<div class="pricing-card__wrap">
+						<article class="pricing-card">
+							<h3 class="pricing-card__title"><?php echo $tariff['name']; ?></h3>
+							<ul class="pricing-card__bullets">
+								<?php foreach ($tariff['bullets'] as $bullet) : ?>
+									<li class="pricing-card__bullet <?php echo $bullet['is_negative'] ? 'pricing-card__bullet--no' : '' ?>">
+										<?php echo $bullet['bullet']; ?>
+									</li>
+								<?php endforeach; ?>
+							</ul>
+							<div class="pricing-card__bottom">
+								<p class="pricing-card__duration">
+									<?php echo $tariff['duration']; ?>
+								</p>
+								<p class="pricing-card__price">
+									<span class="pricing-card__price--special"><?php echo $tariff['cost_special']; ?> €</span>
+									<span class="pricing-card__price--regular"><?php echo $tariff['cost']; ?> €</span>
+								</p>
+								<button class="button button--primary pricing-card__button pricing-card__button--<?php echo $key; ?>">Les tarifs</button>
+								<p class="pricing-card__avalaible">
+									<?php echo $tariff['avalaible']; ?>
+								</p>
+							</div>
+						</article>
+					</div>
+				<?php endforeach; ?>
 			</div>
 		</div>
 	</section>

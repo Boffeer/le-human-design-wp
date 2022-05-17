@@ -70,6 +70,7 @@ Container::make('post_meta', 'landing', 'Landing')
 				'singular_name' => 'Tariff'
 			))
 			->add_fields(array(
+				Field::make('text', 'name', 'Name'),
 				Field::make('complex', 'bullets', 'Bullets')
 					->setup_labels(array(
 						'plural_name' => 'bullets',
