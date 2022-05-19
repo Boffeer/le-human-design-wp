@@ -82,6 +82,18 @@
 		<button class="button button--primary pop__callback-button">Envoyer</button>
 		<p class="form__privacy">En soumettant le formulaire, vous acceptez la politique de confidentialité</p>
 	</form>
+	<form class="form pop__callback form__warranty">
+		<h3 class="pop__title">Acheter en plusieurs fois</h3>
+		<input hidden name="formname" type="text" value="Pour lever les doutes me concernant (sur mon travail), voici mes garanties: ">
+		<div class="input__wrap input__wrap--name">
+			<input class="input input--name" name="user_name" type="text" placeholder="Nom - Prenom">
+		</div>
+		<div class="input__wrap input__wrap--tel">
+			<input class="input input--phone" name="user_tel" type="tel" placeholder="Numero de tèlèphone" inputmode="tel">
+		</div>
+		<button class="button button--primary pop__callback-button">Envoyer</button>
+		<p class="form__privacy">En soumettant le formulaire, vous acceptez la politique de confidentialité</p>
+	</form>
 	<div class="pop-thanks">
 		<p class="pop-thanks__title">Спасибо, ваша заявка отправлена</p>
 		<p class="pop-thanks__desc">Мы перезвоним вам в ближайшее время</p>

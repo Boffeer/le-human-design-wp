@@ -114,6 +114,13 @@ tariffsButtons.forEach((button) => {
   });
 });
 
+poppa({
+  pop: ".form__warranty",
+  clickTrigger: [".warranty__button-start"],
+});
+const warrantyButton = document.querySelector(".warranty__button-start");
+const warrantyForm = document.querySelector(".form__warranty");
+
 // #region validators
 function validateInputText(input) {
   if (input.value == "") {
