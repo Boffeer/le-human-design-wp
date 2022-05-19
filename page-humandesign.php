@@ -310,6 +310,11 @@ $contacts = get_crb_contacts();
 					<div class="pricing-card__wrap">
 						<article class="pricing-card">
 							<h3 class="pricing-card__title"><?php echo $tariff['name']; ?></h3>
+							<?php foreach ($tariff['top_desc'] as $desc) : ?>
+								<p class="pricing-card__desc">
+									<?php echo $desc['bullet'] ?>
+								</p>
+							<?php endforeach; ?>
 							<ul class="pricing-card__bullets">
 								<?php foreach ($tariff['bullets'] as $bullet) : ?>
 									<li class="pricing-card__bullet <?php echo $bullet['is_negative'] ? 'pricing-card__bullet--no' : '' ?>">
@@ -317,6 +322,11 @@ $contacts = get_crb_contacts();
 									</li>
 								<?php endforeach; ?>
 							</ul>
+							<?php foreach ($tariff['bottom_desc'] as $desc) : ?>
+								<p class="pricing-card__desc">
+									<?php echo $desc['bullet'] ?>
+								</p>
+							<?php endforeach; ?>
 							<div class="pricing-card__bottom">
 								<p class="pricing-card__duration">
 									<?php echo $tariff['duration']; ?>
@@ -326,9 +336,11 @@ $contacts = get_crb_contacts();
 									<span class="pricing-card__price--regular"><?php echo $tariff['cost']; ?> €</span>
 								</p>
 								<button class="button button--primary pricing-card__button pricing-card__button--<?php echo $key; ?>">Les tarifs</button>
-								<p class="pricing-card__avalaible">
-									<?php echo $tariff['avalaible']; ?>
-								</p>
+								<?php if ($tariff['avalaible']) : ?>
+									<p class="pricing-card__avalaible">
+										<?php echo $tariff['avalaible']; ?>
+									</p>
+								<?php endif; ?>
 							</div>
 						</article>
 					</div>

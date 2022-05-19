@@ -33,6 +33,12 @@ Container::make('theme_options', 'theme_options', 'Contacts')
 
 Container::make('post_meta', 'landing', 'Landing')
 	->where('post_id', '=', '6')
+	->add_tab('Page settings', array(
+		Field::make('text', 'page_title', 'Page title'),
+		Field::make('textarea', 'page_description', 'Page description'),
+		Field::make('image', 'og_image', 'og:image')
+			->set_value_type('url'),
+	))
 	->add_tab('Reviews', array(
 		Field::make('complex', 'reviews', 'Reviews')
 			->setup_labels(array(
@@ -71,6 +77,14 @@ Container::make('post_meta', 'landing', 'Landing')
 			))
 			->add_fields(array(
 				Field::make('text', 'name', 'Name'),
+				Field::make('complex', 'top_desc', 'Top Desciption')
+					->setup_labels(array(
+						'plural_name' => 'paragraphs',
+						'singular_name' => 'paragraph'
+					))
+					->add_fields(array(
+						Field::make('text', 'bullet', 'Paragraph'),
+					)),
 				Field::make('complex', 'bullets', 'Bullets')
 					->setup_labels(array(
 						'plural_name' => 'bullets',
@@ -80,6 +94,14 @@ Container::make('post_meta', 'landing', 'Landing')
 						Field::make('text', 'bullet', 'Bullet'),
 						Field::make('checkbox', 'is_negative', __('Is negative'))
 							->set_option_value('yes')
+					)),
+				Field::make('complex', 'bottom_desc', 'Bottom Desciption')
+					->setup_labels(array(
+						'plural_name' => 'paragraphs',
+						'singular_name' => 'paragraph'
+					))
+					->add_fields(array(
+						Field::make('text', 'bullet', 'Bullet'),
 					)),
 				Field::make('text', 'duration', 'Duration'),
 				Field::make('text', 'cost', 'Cost'),
