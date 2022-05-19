@@ -69,9 +69,10 @@
 </footer>
 
 <div class="popups">
-	<form class="form pop__callback">
+	<form class="form pop__callback form__callback">
 		<h3 class="pop__title">Remplissez le formulaire</h3>
 		<p class="pop__subtitle">Et obtenez une consultation</p>
+		<input hidden name="formname" type="text" value="Remplissez le formulaire — Et obtenez une consultation">
 		<div class="input__wrap input__wrap--name">
 			<input class="input input--name" name="user_name" type="text" placeholder="Nom - Prenom">
 		</div>

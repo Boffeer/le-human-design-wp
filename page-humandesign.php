@@ -347,6 +347,23 @@ $contacts = get_crb_contacts();
 				<?php endforeach; ?>
 			</div>
 		</div>
+
+		<div class="popups">
+			<form class="form pop__callback form__tariff">
+				<h3 class="pop__title">Remplissez le formulaire</h3>
+				<p class="pop__subtitle">Et obtenez une consultation</p>
+				<input hidden name="formname" type="text" value="Remplissez le formulaire — Et obtenez une consultation">
+				<input hidden name="price" type="text" value="">
+				<input hidden name="tariff" type="text" value="">
+				<div class="input__wrap input__wrap--name">
+					<input class="input input--name" name="user_name" type="text" placeholder="Nom - Prenom">
+				</div>
+				<div class="input__wrap input__wrap--tel">
+					<input class="input input--phone" name="user_tel" type="tel" placeholder="Numero de tèlèphone" inputmode="tel">
+				</div>
+				<button class="button button--primary pop__callback-button">Rèserver le rendez-<br>vous en ligne</button>
+			</form>
+		</div>
 	</section>
 
 	<section class="warranty">

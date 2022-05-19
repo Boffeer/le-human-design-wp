@@ -91,9 +91,27 @@ const programmCard = document.querySelector(".programm-card__top");
 programmCard.click();
 
 poppa({
-  pop: ".pop__callback",
+  pop: ".form__callback",
   clickTrigger: [".header__button-callback"],
-  // openedByDefault: true,
+});
+
+poppa({
+  pop: ".form__tariff",
+  clickTrigger: [".pricing-card__button"],
+});
+const tariffsButtons = document.querySelectorAll(".pricing-card__button");
+tariffsButtons.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    const price = button.parentElement.parentElement.querySelector(
+      ".pricing-card__price--special"
+    );
+    const tariff = button.parentElement.parentElement.querySelector(
+      ".pricing-card__title"
+    );
+    const formTariff = document.querySelector(".form__tariff");
+    formTariff.querySelector('input[name="price"]').value = price.innerText;
+    formTariff.querySelector('input[name="tariff"]').value = tariff.innerText;
+  });
 });
 
 // #region validators
@@ -187,24 +205,40 @@ phones.forEach((phone) => {
 // #region form
 const forms = document.querySelectorAll(".form");
 forms.forEach((form) => {
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     form.querySelectorAll("input").forEach((input) => {
       if (input.type === "tel") {
         validatePhone(input);
       }
-      if (input.type === "text" && !input.disabled) {
+      if (input.type === "text" && !input.hidden) {
         validateInputText(input);
       }
     });
 
     let invalidInputs = [...form.querySelectorAll(".input--invalid")];
-    if (invalidInputs.length === 0) {
-      console.log("valid");
-    } else {
+    if (invalidInputs.length != 0) {
       console.log("invalid");
+      return;
     }
+    console.log("valid");
+
+    console.log("form send");
+    event.preventDefault();
+
+    let response = await fetch(
+      window.location.origin + "/wp-content/themes/lhd/send.php",
+      {
+        method: "POST",
+        body: new URLSearchParams(new FormData(form)),
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      }
+    );
+    let result = await response.json();
+    console.log(result);
   });
 });
 // #endregion form
