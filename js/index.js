@@ -239,6 +239,7 @@ forms.forEach((form) => {
     );
     let result = await response.json();
     console.log(result);
+    form.querySelector(".button--primary").innerText = "Expédié";
   });
 });
 // #endregion form

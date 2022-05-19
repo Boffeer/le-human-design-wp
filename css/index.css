@@ -24,12 +24,12 @@
   --fz-title-section: 44px;
   --ff-regular: "Montserrat", "Arial", "Helvetica", sans-serif;
   --bg-primary: linear-gradient(
-			274.24deg,
-			rgba(255, 255, 255, 0) -1.45%,
-			rgba(255, 255, 255, 0.28) 41.35%,
-			rgba(255, 255, 255, 0) 97.56%
-		),
-		linear-gradient(264.53deg, #9443fc 10.33%, #4358fc 95.95%);
+      274.24deg,
+      rgba(255, 255, 255, 0) -1.45%,
+      rgba(255, 255, 255, 0.28) 41.35%,
+      rgba(255, 255, 255, 0) 97.56%
+    ),
+    linear-gradient(264.53deg, #9443fc 10.33%, #4358fc 95.95%);
   --pi-decor: none;
   --z-dropdown: 10;
   --z-tooltip: 20;
@@ -441,8 +441,15 @@ body {
 .pop__callback-button {
   font-size: 14px;
   width: 100%;
-  padding-top: 16px;
-  padding-bottom: 16px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  margin-bottom: 15px;
+}
+
+.form__privacy {
+  font-size: 12px;
+  text-align: center;
+  color: var(--c-text-second);
 }
 
 @media (max-width: 575px) {
@@ -2620,5 +2627,35 @@ body {
     margin-right: auto;
     text-align: center;
   }
+}
+
+.site-main {
+  padding-top: 200px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.site-main h1,
+.site-main h2,
+.site-main h3,
+.site-main h4,
+.site-main h5,
+.site-main h6 {
+  font-weight: 700;
+  font-family: var(--ff-regular);
+  font-size: initial;
+  margin-bottom: 20px;
+}
+
+.site-main ul,
+.site-main ol,
+.site-main li,
+.site-main p {
+  line-height: 2;
+  font-size: 20px;
+  font-family: var(--ff-regular);
 }
 /*# sourceMappingURL=index.css.map */

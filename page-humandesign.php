@@ -335,7 +335,7 @@ $contacts = get_crb_contacts();
 									<span class="pricing-card__price--special"><?php echo $tariff['cost_special']; ?> €</span>
 									<span class="pricing-card__price--regular"><?php echo $tariff['cost']; ?> €</span>
 								</p>
-								<button class="button button--primary pricing-card__button pricing-card__button--<?php echo $key; ?>">Les tarifs</button>
+								<button class="button button--primary pricing-card__button pricing-card__button--<?php echo $key; ?>">Acheter</button>
 								<?php if ($tariff['avalaible']) : ?>
 									<p class="pricing-card__avalaible">
 										<?php echo $tariff['avalaible']; ?>
@@ -361,7 +361,8 @@ $contacts = get_crb_contacts();
 				<div class="input__wrap input__wrap--tel">
 					<input class="input input--phone" name="user_tel" type="tel" placeholder="Numero de tèlèphone" inputmode="tel">
 				</div>
-				<button class="button button--primary pop__callback-button">Rèserver le rendez-<br>vous en ligne</button>
+				<button class="button button--primary pop__callback-button">Envoyer</button>
+				<p class="form__privacy">En soumettant le formulaire, vous acceptez la politique de confidentialité</p>
 			</form>
 		</div>
 	</section>
